@@ -1,10 +1,10 @@
 function dashboard(id, fData){
 
     var barColor = 'steelblue';
-    function segColor(c){ return {Test: "#7cb5ec", ODIs:"#434348", T20Is: "#90ed7d" }[c]; }
+    function segColor(c){ return {Shots: "#7cb5ec", Goals:"#434348", Assist: "#90ed7d" }[c]; }
     
     // compute total for each state.
-    fData.forEach(function(d){d.total=d.freq.Test+d.freq.ODIs+d.freq.T20Is;});
+    fData.forEach(function(d){d.total=d.freq.Shots+d.freq.Goals+d.freq.Assist;});
     
     // function to handle histogram.
     function histoGram(fD){
@@ -189,7 +189,7 @@ function dashboard(id, fData){
     }
     
     // calculate total frequency by segment for all state.
-    var tF = ['Test','ODIs','T20Is'].map(function(d){ 
+    var tF = ['Shots','Goals','Assist'].map(function(d){ 
         return {type:d, freq: d3.sum(fData.map(function(t){ return t.freq[d];}))}; 
     });    
     
